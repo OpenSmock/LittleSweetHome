@@ -92,7 +92,8 @@ LSHCameraManagerComponentImpl >> getCamera: name [
 	self camDict
 		keysAndValuesDo: [ :k :v | 
 			name = k
-				ifTrue: [ ^ v ] ]
+				ifTrue: [ ^ v ] ].
+	^ nil
 ]
 
 { #category : #'component accessing' }

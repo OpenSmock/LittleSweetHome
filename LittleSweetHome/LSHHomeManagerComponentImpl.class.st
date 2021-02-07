@@ -35,6 +35,7 @@ LSHHomeManagerComponentImpl class >> consumedComponentEvents [
 LSHHomeManagerComponentImpl >> activateIR: component and: aBoolean [
 	| componentused |
 	componentused := self getLSHCameraManagerServicesProvider getCamera: component.
+	componentused ifNil:[ ^ self ].
 	componentused toggleVideoIR: aBoolean
 ]
 
@@ -42,6 +43,7 @@ LSHHomeManagerComponentImpl >> activateIR: component and: aBoolean [
 LSHHomeManagerComponentImpl >> activateTemperatureRegulation: component and: aBoolean value: value [
 	| componentused |
 	componentused := self getLSHTemperatureManagerServicesProvider getSensor: component.
+	componentused ifNil:[ ^ self].
 	aBoolean
 		ifTrue: [ componentused measureTemperature: value ].
 ]
@@ -78,9 +80,11 @@ LSHHomeManagerComponentImpl >> batteryLevel: compName [
 	isTemperatureSensor traceCr.
 	isTemperatureSensor
 		ifTrue: [ componentused := self getLSHTemperatureManagerServicesProvider getSensor: compName.
+			componentused ifNil:[ ^ self].
 			componentused traceCr.
 			componentused batteryLevel ]
 		ifFalse: [ componentused := self getLSHCameraManagerServicesProvider getCamera: compName.
+			componentused ifNil:[ ^ self].
 			componentused traceCr.
 			componentused batteryLevel ]
 ]
@@ -109,6 +113,7 @@ LSHHomeManagerComponentImpl >> cantTakePhoto: compName [
 LSHHomeManagerComponentImpl >> choosePeriod: component during: time [
 	| componentused |
 	componentused := self getLSHCameraManagerServicesProvider getCamera: component.
+	componentused ifNil:[ ^ self ].
 	time isNil
 		ifTrue: [ componentused stopRecordVideo ]
 		ifFalse: [ componentused recordVideo: time ]
@@ -363,6 +368,7 @@ LSHHomeManagerComponentImpl >> getLSHVisualServicesProvider [
 LSHHomeManagerComponentImpl >> getTemperature: component [
 	| usedcomponent |
 	usedcomponent := self getLSHTemperatureManagerServicesProvider getSensor: component.
+	usedcomponent ifNil:[ ^ self].
 	self temperature: usedcomponent transferTemperature
 ]
 
@@ -380,6 +386,7 @@ LSHHomeManagerComponentImpl >> internalError: component [
 LSHHomeManagerComponentImpl >> listPhoto: component [
 	| componentused |
 	componentused := self getLSHCameraManagerServicesProvider getCamera: component.
+	componentused ifNil:[ ^ self].
 	componentused transferPhotoNames.
 ]
 
@@ -387,6 +394,7 @@ LSHHomeManagerComponentImpl >> listPhoto: component [
 LSHHomeManagerComponentImpl >> listVideo: component [
 	| componentused |
 	componentused := self getLSHCameraManagerServicesProvider getCamera: component.
+	componentused ifNil:[ ^ self].
 	componentused transferVideoNames
 ]
 
@@ -545,6 +553,7 @@ LSHHomeManagerComponentImpl >> removeVideo: component named: listname [
 LSHHomeManagerComponentImpl >> takePhoto: component [
 	| componentused |
 	componentused := self getLSHCameraManagerServicesProvider getCamera: component.
+	componentused ifNil:[ ^ self ]. 
 	componentused getPhoto
 ]
 
@@ -612,5 +621,6 @@ LSHHomeManagerComponentImpl >> videoNamesDict: anObject [
 LSHHomeManagerComponentImpl >> zoom: component and: aBoolean value: value [
 	| componentused |
 	componentused := self getLSHCameraManagerServicesProvider getCamera: component.
+	componentused ifNil:[ ^ self ].
 	componentused zoom: aBoolean value: value.
 ]

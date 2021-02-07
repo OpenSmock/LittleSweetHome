@@ -9,7 +9,6 @@ self demoRecording.
 self demoRecordingControlledCamera.
 self demoRecordingFixedCamera.
 self demoTemperatureSensor.
-self remove.
 "
 Class {
 	#name : #LSHLauncher,

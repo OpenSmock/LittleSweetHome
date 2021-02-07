@@ -80,7 +80,8 @@ LSHTemperatureManagerComponentImpl >> getSensor: name [
 	self temperatureSensorDict
 		keysAndValuesDo: [ :k :v | 
 			name = k
-				ifTrue: [ ^ v ] ]
+				ifTrue: [ ^ v ] ].
+	^ nil
 ]
 
 { #category : #accessing }
