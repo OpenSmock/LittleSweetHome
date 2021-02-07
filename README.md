@@ -7,3 +7,14 @@ Metacello new
    repository: 'github://OpenSmock/LittleSweetHome/src';
    load.
 ```
+## Credits
+
+* **Camille Delloye** - *Initial work*
+* **Eric Le Pors** - *Initial work* - [ELePors](https://github.com/ELePors)
+* **Pierre Laborde** - *Initial work* - [labordep](https://github.com/labordep)
+
+![Molecule Logo](MoleculeLogotype.svg)
+
+## License
+
+This project is licensed under the MIT License.
