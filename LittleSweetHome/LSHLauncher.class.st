@@ -1,5 +1,15 @@
 "
 I'm a test of the little sweet home.
+
+""a LSHLauncher""
+self demoAddCameras.
+self demoAddTemperatureSensor.
+self demoMotionSensor.
+self demoRecording.
+self demoRecordingControlledCamera.
+self demoRecordingFixedCamera.
+self demoTemperatureSensor.
+self remove.
 "
 Class {
 	#name : #LSHLauncher,
